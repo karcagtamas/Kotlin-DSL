@@ -2,19 +2,30 @@ package com.example
 
 import com.example.console.shapes.*
 import com.example.dsl.panel
+import com.example.dsl.rhombus
+import com.example.dsl.square
+import com.example.dsl.triangle
 
 fun main() {
     panel {
-        val square = Square(8, 'd')
-        val triangle = Triangle(7, 's')
-        val rhombus = Rhombus(11, 'l')
+        val square = square {
+            lines = 8
+            char = 'd'
+        }
+        addShape(Space)
 
-        addShape(square)
+        val triangle = triangle {
+            lines = 7
+            char = 's'
+        }
         addShape(Space)
-        addShape(triangle)
+
+        val rhombus = rhombus {
+            lines = 11
+            char = 'l'
+        }
         addShape(Space)
-        addShape(rhombus)
-        addShape(Space)
+
         addShape(
             ComposedShape(square, rhombus, ComposedShape.Operation.UNION)
         )
