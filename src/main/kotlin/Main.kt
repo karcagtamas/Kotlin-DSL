@@ -9,37 +9,37 @@ fun main() {
         val triangle = Triangle(7, 's')
         val rhombus = Rhombus(11, 'l')
 
-        it.addShape(square)
-        it.addShape(Space)
-        it.addShape(triangle)
-        it.addShape(Space)
-        it.addShape(rhombus)
-        it.addShape(Space)
-        it.addShape(
+        addShape(square)
+        addShape(Space)
+        addShape(triangle)
+        addShape(Space)
+        addShape(rhombus)
+        addShape(Space)
+        addShape(
             ComposedShape(square, rhombus, ComposedShape.Operation.UNION)
         )
-        it.addShape(Space)
-        it.addShape(
+        addShape(Space)
+        addShape(
             ComposedShape(rhombus, triangle, ComposedShape.Operation.UNION)
         )
-        it.addShape(Space)
-        it.addShape(
+        addShape(Space)
+        addShape(
             ComposedShape(square, rhombus, ComposedShape.Operation.INTERSECTION)
         )
-        it.addShape(Space)
-        it.addShape(
+        addShape(Space)
+        addShape(
             ComposedShape(rhombus, triangle, ComposedShape.Operation.INTERSECTION)
         )
-        it.addShape(Space)
-        it.addShape(
+        addShape(Space)
+        addShape(
             ComposedShape(
                 ComposedShape(square, rhombus, ComposedShape.Operation.UNION),
                 triangle,
                 ComposedShape.Operation.UNION
             )
         )
-        it.addShape(Space)
-        it.addShape(
+        addShape(Space)
+        addShape(
             ComposedShape(
                 ComposedShape(square, rhombus, ComposedShape.Operation.INTERSECTION),
                 triangle,
