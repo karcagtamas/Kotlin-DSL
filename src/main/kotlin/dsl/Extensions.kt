@@ -1,9 +1,7 @@
 package com.example.dsl
 
 import com.example.console.container.Panel
-import com.example.console.shapes.Rhombus
-import com.example.console.shapes.Square
-import com.example.console.shapes.Triangle
+import com.example.console.shapes.*
 import com.example.dsl.builders.RhombusBuilder
 import com.example.dsl.builders.SquareBuilder
 import com.example.dsl.builders.TriangleBuilder
@@ -22,4 +20,20 @@ fun Panel.triangle(init: TriangleBuilder.() -> Unit): Triangle {
 
 fun Panel.rhombus(init: RhombusBuilder.() -> Unit): Rhombus {
     return RhombusBuilder().apply { init() }.build().also { addShape(it) }
+}
+
+fun Panel.space(): Unit {
+    addShape(Space)
+}
+
+fun Panel.composed(init: () -> ComposedShape): ComposedShape {
+    return init().also { addShape(it) }
+}
+
+infix fun Shape.union(other: Shape): ComposedShape {
+    return ComposedShape(this, other, ComposedShape.Operation.UNION)
+}
+
+infix fun Shape.intersection(other: Shape): ComposedShape {
+    return ComposedShape(this, other, ComposedShape.Operation.INTERSECTION)
 }
