@@ -1,4 +1,4 @@
-package com.example.shapes
+package com.example.console.shapes
 
 class ComposedShape(first: Shape, second: Shape, operation: Operation) : Shape() {
 

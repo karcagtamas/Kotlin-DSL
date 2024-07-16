@@ -1,4 +1,4 @@
-package com.example.shapes
+package com.example.console.shapes
 
 abstract class Shape {
     

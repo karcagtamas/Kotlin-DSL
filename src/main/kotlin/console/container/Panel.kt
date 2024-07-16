@@ -1,4 +1,4 @@
-package com.example.container
+package com.example.console.container
 
 import com.example.shapes.Shape
 

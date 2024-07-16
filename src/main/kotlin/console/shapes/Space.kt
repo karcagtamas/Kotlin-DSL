@@ -1,4 +1,4 @@
-package com.example.shapes
+package com.example.console.shapes
 
 object Space: Shape() {
     private const val WIDTH = 3
