@@ -5,8 +5,9 @@ import com.example.console.shapes.*
 import com.example.dsl.builders.RhombusBuilder
 import com.example.dsl.builders.SquareBuilder
 import com.example.dsl.builders.TriangleBuilder
+import com.example.dsl.markers.ShapeDsl
 
-inline fun panel(init: Panel.() -> Unit): Panel {
+inline fun panel(init: (@ShapeDsl Panel).() -> Unit): Panel {
     return Panel().apply { init() }
 }
 
