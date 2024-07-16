@@ -26,7 +26,7 @@ fun main() {
 
         space()
 
-        composed { rhombus union triangle }
+        composed { rhombus + triangle }
 
         space()
 
@@ -34,7 +34,7 @@ fun main() {
 
         space()
 
-        composed { rhombus intersection triangle }
+        composed { rhombus - triangle }
 
         space()
 

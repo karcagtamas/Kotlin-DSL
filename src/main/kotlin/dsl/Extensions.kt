@@ -6,19 +6,19 @@ import com.example.dsl.builders.RhombusBuilder
 import com.example.dsl.builders.SquareBuilder
 import com.example.dsl.builders.TriangleBuilder
 
-fun panel(init: Panel.() -> Unit): Panel {
+inline fun panel(init: Panel.() -> Unit): Panel {
     return Panel().apply { init() }
 }
 
-fun Panel.square(init: SquareBuilder.() -> Unit): Square {
+inline fun Panel.square(init: SquareBuilder.() -> Unit): Square {
     return SquareBuilder().apply { init() }.build().also { addShape(it) }
 }
 
-fun Panel.triangle(init: TriangleBuilder.() -> Unit): Triangle {
+inline fun Panel.triangle(init: TriangleBuilder.() -> Unit): Triangle {
     return TriangleBuilder().apply { init() }.build().also { addShape(it) }
 }
 
-fun Panel.rhombus(init: RhombusBuilder.() -> Unit): Rhombus {
+inline fun Panel.rhombus(init: RhombusBuilder.() -> Unit): Rhombus {
     return RhombusBuilder().apply { init() }.build().also { addShape(it) }
 }
 
@@ -26,7 +26,7 @@ fun Panel.space(): Unit {
     addShape(Space)
 }
 
-fun Panel.composed(init: () -> ComposedShape): ComposedShape {
+inline fun Panel.composed(init: () -> ComposedShape): ComposedShape {
     return init().also { addShape(it) }
 }
 
@@ -36,4 +36,12 @@ infix fun Shape.union(other: Shape): ComposedShape {
 
 infix fun Shape.intersection(other: Shape): ComposedShape {
     return ComposedShape(this, other, ComposedShape.Operation.INTERSECTION)
+}
+
+operator fun Shape.plus(other: Shape): ComposedShape {
+    return this union other
+}
+
+operator fun Shape.minus(other: Shape): ComposedShape {
+    return this intersection other
 }
